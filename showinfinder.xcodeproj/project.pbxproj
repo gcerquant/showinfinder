@@ -102,6 +102,7 @@
 				A9684EDE14D9E56700B95A04 /* Sources */,
 				A9684EDF14D9E56700B95A04 /* Frameworks */,
 				A9684EE014D9E56700B95A04 /* CopyFiles */,
+				A9684EFA14DAAE9300B95A04 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -137,6 +138,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A9684EFA14DAAE9300B95A04 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/python;
+			shellScript = "#!/usr/bin/python\n\n# Will apply custom icon to file\n\nimport os\n\nfrom AppKit import NSWorkspace\nfrom AppKit import NSImage\n\n\niconPath = os.environ['SRCROOT'] + \"/showinfinder/showinfinder_icon.icns\"\nfileToApplyIconPath = os.environ['SYMROOT'] + \"/\" + os.environ['CONFIGURATION'] + \"/\" + os.environ['EXECUTABLE_PATH']\n\n# print iconPath\n# print fileToApplyIconPath\n\niconImage = NSImage.alloc().initWithContentsOfFile_(iconPath)\n\nNSWorkspace.sharedWorkspace().setIcon_forFile_options_(iconImage, fileToApplyIconPath , 0)\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9684EDE14D9E56700B95A04 /* Sources */ = {
@@ -234,6 +251,7 @@
 				A9684EF314D9E56700B95A04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
