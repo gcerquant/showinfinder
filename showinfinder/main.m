@@ -25,7 +25,8 @@ int main (int argc, const char * argv[])
             NSString *filePath = [[NSString stringWithCString:argv[i] encoding:NSASCIIStringEncoding] stringByExpandingTildeInPath];
             
             if (isInvisible(filePath)) {
-                NSLog(@"%@ is invisible. Finder won't show it!", filePath);
+                fprintf(stderr, "%s is invisible. Finder won't show it!\n", [filePath cStringUsingEncoding:NSUTF8StringEncoding]);
+
             } else {
                 [urls addObject:[[NSURL fileURLWithPath:filePath] absoluteURL]];
             }
@@ -33,7 +34,7 @@ int main (int argc, const char * argv[])
         
         
         if (! urls.count) {
-            NSLog(@"Nothing to do. Bye!");
+            fprintf(stderr, "Nothing to do. Bye!\n");
             exit(1);
         }
 
